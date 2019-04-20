@@ -1,0 +1,70 @@
+Added Component: Designator=DS0(A)
+Added Component: Designator=DS1(A)
+Added Component: Designator=DS2(A)
+Added Component: Designator=Port1(HDR1X2)
+Added Component: Designator=Port2(HDR1X8)
+Added Pin To Net: NetName=D0 Pin=DS0-10
+Added Pin To Net: NetName=D0 Pin=DS1-10
+Added Pin To Net: NetName=D0 Pin=DS2-10
+Added Net: Name=D0
+Added Pin To Net: NetName=D1 Pin=DS0-9
+Added Pin To Net: NetName=D1 Pin=DS1-9
+Added Pin To Net: NetName=D1 Pin=DS2-9
+Added Net: Name=D1
+Added Pin To Net: NetName=D2 Pin=DS0-8
+Added Pin To Net: NetName=D2 Pin=DS1-8
+Added Pin To Net: NetName=D2 Pin=DS2-8
+Added Net: Name=D2
+Added Pin To Net: NetName=D3 Pin=DS0-5
+Added Pin To Net: NetName=D3 Pin=DS1-5
+Added Pin To Net: NetName=D3 Pin=DS2-5
+Added Net: Name=D3
+Added Pin To Net: NetName=D4 Pin=DS0-4
+Added Pin To Net: NetName=D4 Pin=DS1-4
+Added Pin To Net: NetName=D4 Pin=DS2-4
+Added Net: Name=D4
+Added Pin To Net: NetName=D5 Pin=DS0-2
+Added Pin To Net: NetName=D5 Pin=DS1-2
+Added Pin To Net: NetName=D5 Pin=DS2-2
+Added Net: Name=D5
+Added Pin To Net: NetName=D6 Pin=DS0-3
+Added Pin To Net: NetName=D6 Pin=DS1-3
+Added Pin To Net: NetName=D6 Pin=DS2-3
+Added Net: Name=D6
+Added Pin To Net: NetName=D7 Pin=DS0-7
+Added Pin To Net: NetName=D7 Pin=DS1-7
+Added Pin To Net: NetName=D7 Pin=DS2-7
+Added Net: Name=D7
+Added Net: Name=GND
+Added Pin To Net: NetName=P0 Pin=Port2-1
+Added Net: Name=P0
+Added Pin To Net: NetName=P1 Pin=Port2-2
+Added Net: Name=P1
+Added Pin To Net: NetName=P2.2 Pin=Port1-1
+Added Net: Name=P2.2
+Added Pin To Net: NetName=P2.3 Pin=Port1-2
+Added Net: Name=P2.3
+Added Pin To Net: NetName=P2 Pin=Port2-3
+Added Net: Name=P2
+Added Pin To Net: NetName=P3 Pin=Port2-4
+Added Net: Name=P3
+Added Pin To Net: NetName=P4 Pin=Port2-5
+Added Net: Name=P4
+Added Pin To Net: NetName=P5 Pin=Port2-6
+Added Net: Name=P5
+Added Pin To Net: NetName=P6 Pin=Port2-7
+Added Net: Name=P6
+Added Pin To Net: NetName=P7 Pin=Port2-8
+Added Net: Name=P7
+Added Pin To Net: NetName=VCC Pin=DS0-1
+Added Pin To Net: NetName=VCC Pin=DS1-1
+Added Pin To Net: NetName=VCC Pin=DS2-1
+Added Net: Name=VCC
+Added Pin To Net: NetName=W0 Pin=DS0-6
+Added Net: Name=W0
+Added Pin To Net: NetName=W1 Pin=DS1-6
+Added Net: Name=W1
+Added Pin To Net: NetName=W2 Pin=DS2-6
+Added Net: Name=W2
+Added Class: Name=key_count
+Added Room: Name=key_count

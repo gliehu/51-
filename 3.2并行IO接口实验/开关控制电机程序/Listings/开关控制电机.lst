@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  ____________                                                         04/11/2019 11:59:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\开关控制电机.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE 开关控制电机.a51 SET(SMALL) DEBUG PRINT(.\Listings\开关控制电机.lst) OBJEC
+                      T(.\Objects\开关控制电机.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758160            1     MOV     SP,     #60H
+0003 7590FF            2     MOV     P1,     #0FFH
+                       3     
+0006                   4     START:
+0006 309706            5     JNB     P1.7,   ON
+0009 D290              6     SETB    P1.0
+000B D291              7     SETB    P1.1
+000D 80F7              8     SJMP    START
+                       9     
+000F                  10     ON:
+000F C290             11     CLR     P1.0
+0011 C292             12     CLR     P1.2
+0013 020006           13     LJMP    START
+                      14     END
+A51 MACRO ASSEMBLER  ____________                                                         04/11/2019 11:59:17 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ON . . . . . . . .  C ADDR   000FH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

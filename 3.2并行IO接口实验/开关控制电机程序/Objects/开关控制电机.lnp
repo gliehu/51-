@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\开关控制电机.obj" 
+TO ".\Objects\开关控制电机" 
+PRINT(".\Listings\开关控制电机.m51") RAMSIZE(256) 

@@ -1,0 +1,48 @@
+A51 MACRO ASSEMBLER  ______________                                                       04/11/2019 11:55:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\二极管循环点亮.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE 二极管循环点亮.a51 SET(SMALL) DEBUG PRINT(.\Listings\二极管循环点亮.lst) O
+                      BJECT(.\Objects\二极管循环点亮.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758160            1     MOV     SP,     #60H
+0003 7580FF            2     MOV     P0,     #0FFH
+0006 74FE              3     MOV     A,      #0FEH
+                       4     
+0008                   5     START:
+0008 F580              6     MOV      P0,     A
+000A 23                7     RL       A
+000B 110F              8     CALL     DELAY
+000D 80F9              9     SJMP     START
+                      10     
+000F 7EF8             11     DELAY: MOV              R6,             #248    ;扫描延时
+0011 7FF8             12     D3:    MOV              R7,             #248
+0013 7D0A             13     D4:      MOV            R5,             #10
+0015 DDFE             14              DJNZ   R5,             $
+0017 DFFA             15            DJNZ     R7,             D4
+0019 DEF6             16            DJNZ     R6,             D3
+001B 22               17            RET
+                      18     END
+A51 MACRO ASSEMBLER  ______________                                                       04/11/2019 11:55:15 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D3 . . . . . . . .  C ADDR   0011H   A   
+D4 . . . . . . . .  C ADDR   0013H   A   
+DELAY. . . . . . .  C ADDR   000FH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0008H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

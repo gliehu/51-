@@ -1,0 +1,53 @@
+Removed Pin From Net: NetName=P2.2 Pin=Port1-1
+Removed Pin From Net: NetName=P2.3 Pin=Port1-2
+Removed Pin From Net: NetName=P0 Pin=Port2-1
+Removed Pin From Net: NetName=P1 Pin=Port2-2
+Removed Pin From Net: NetName=P2 Pin=Port2-3
+Removed Pin From Net: NetName=P3 Pin=Port2-4
+Removed Pin From Net: NetName=P4 Pin=Port2-5
+Removed Pin From Net: NetName=P5 Pin=Port2-6
+Removed Pin From Net: NetName=P6 Pin=Port2-7
+Removed Pin From Net: NetName=P7 Pin=Port2-8
+Removed Member From Class: ClassName=key_count Member=Port1
+Removed Member From Class: ClassName=key_count Member=Port2
+Added Component: Designator=C1(RAD-0.3)
+Added Component: Designator=C2(RAD-0.3)
+Added Component: Designator=C3(RB7.6-15)
+Added Component: Designator=R1(AXIAL-0.4)
+Added Component: Designator=R2(AXIAL-0.4)
+Added Component: Designator=R3(AXIAL-0.4)
+Added Component: Designator=S1(SPST-2)
+Added Component: Designator=S2(SPST-2)
+Added Component: Designator=Y1(R38)
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=VCC Pin=C3-1
+Added Pin To Net: NetName=VCC Pin=R1-2
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=GND Pin=S1-1
+Added Pin To Net: NetName=VCC Pin=S2-2
+Added Pin To Net: NetName=INT0 Pin=R1-1
+Added Pin To Net: NetName=INT0 Pin=S1-2
+Added Net: Name=INT0
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=NetR2_1 Pin=S2-1
+Added Net: Name=NetR2_1
+Added Pin To Net: NetName=RST Pin=C3-2
+Added Pin To Net: NetName=RST Pin=R2-2
+Added Pin To Net: NetName=RST Pin=R3-2
+Added Net: Name=RST
+Added Pin To Net: NetName=XTAL1 Pin=C2-2
+Added Pin To Net: NetName=XTAL1 Pin=Y1-1
+Added Net: Name=XTAL1
+Added Pin To Net: NetName=XTAL2 Pin=C1-2
+Added Pin To Net: NetName=XTAL2 Pin=Y1-2
+Added Net: Name=XTAL2
+Added Member To Class: ClassName=key_count Member=Component C1 Cap
+Added Member To Class: ClassName=key_count Member=Component C2 Cap
+Added Member To Class: ClassName=key_count Member=Component C3 Cap Pol1
+Added Member To Class: ClassName=key_count Member=Component R1 Res2
+Added Member To Class: ClassName=key_count Member=Component R2 Res2
+Added Member To Class: ClassName=key_count Member=Component R3 Res2
+Added Member To Class: ClassName=key_count Member=Component S1 SW-PB
+Added Member To Class: ClassName=key_count Member=Component S2 SW-PB
+Added Member To Class: ClassName=key_count Member=Component Y1 XTAL

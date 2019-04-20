@@ -1,0 +1,90 @@
+Added Component: Designator=C1(RAD-0.3)
+Added Component: Designator=C2(RAD-0.3)
+Added Component: Designator=C3(RB7.6-15)
+Added Component: Designator=DS0(A)
+Added Component: Designator=DS1(A)
+Added Component: Designator=DS2(A)
+Added Component: Designator=R1(AXIAL-0.4)
+Added Component: Designator=R2(AXIAL-0.4)
+Added Component: Designator=R3(AXIAL-0.4)
+Added Component: Designator=S1(SPST-2)
+Added Component: Designator=S2(SPST-2)
+Added Component: Designator=Y1(R38)
+Added Pin To Net: NetName=D0 Pin=DS0-10
+Added Pin To Net: NetName=D0 Pin=DS1-10
+Added Pin To Net: NetName=D0 Pin=DS2-10
+Added Net: Name=D0
+Added Pin To Net: NetName=D1 Pin=DS0-9
+Added Pin To Net: NetName=D1 Pin=DS1-9
+Added Pin To Net: NetName=D1 Pin=DS2-9
+Added Net: Name=D1
+Added Pin To Net: NetName=D2 Pin=DS0-8
+Added Pin To Net: NetName=D2 Pin=DS1-8
+Added Pin To Net: NetName=D2 Pin=DS2-8
+Added Net: Name=D2
+Added Pin To Net: NetName=D3 Pin=DS0-5
+Added Pin To Net: NetName=D3 Pin=DS1-5
+Added Pin To Net: NetName=D3 Pin=DS2-5
+Added Net: Name=D3
+Added Pin To Net: NetName=D4 Pin=DS0-4
+Added Pin To Net: NetName=D4 Pin=DS1-4
+Added Pin To Net: NetName=D4 Pin=DS2-4
+Added Net: Name=D4
+Added Pin To Net: NetName=D5 Pin=DS0-2
+Added Pin To Net: NetName=D5 Pin=DS1-2
+Added Pin To Net: NetName=D5 Pin=DS2-2
+Added Net: Name=D5
+Added Pin To Net: NetName=D6 Pin=DS0-3
+Added Pin To Net: NetName=D6 Pin=DS1-3
+Added Pin To Net: NetName=D6 Pin=DS2-3
+Added Net: Name=D6
+Added Pin To Net: NetName=D7 Pin=DS0-7
+Added Pin To Net: NetName=D7 Pin=DS1-7
+Added Pin To Net: NetName=D7 Pin=DS2-7
+Added Net: Name=D7
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=GND Pin=R3-1
+Added Pin To Net: NetName=GND Pin=S1-1
+Added Net: Name=GND
+Added Pin To Net: NetName=INT0 Pin=R1-1
+Added Pin To Net: NetName=INT0 Pin=S1-2
+Added Net: Name=INT0
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=NetR2_1 Pin=S2-1
+Added Net: Name=NetR2_1
+Added Net: Name=P0
+Added Net: Name=P1
+Added Net: Name=P2.2
+Added Net: Name=P2.3
+Added Net: Name=P2
+Added Net: Name=P3
+Added Net: Name=P4
+Added Net: Name=P5
+Added Net: Name=P6
+Added Net: Name=P7
+Added Pin To Net: NetName=RST Pin=C3-2
+Added Pin To Net: NetName=RST Pin=R2-2
+Added Pin To Net: NetName=RST Pin=R3-2
+Added Net: Name=RST
+Added Pin To Net: NetName=VCC Pin=C3-1
+Added Pin To Net: NetName=VCC Pin=DS0-1
+Added Pin To Net: NetName=VCC Pin=DS1-1
+Added Pin To Net: NetName=VCC Pin=DS2-1
+Added Pin To Net: NetName=VCC Pin=R1-2
+Added Pin To Net: NetName=VCC Pin=S2-2
+Added Net: Name=VCC
+Added Pin To Net: NetName=W0 Pin=DS0-6
+Added Net: Name=W0
+Added Pin To Net: NetName=W1 Pin=DS1-6
+Added Net: Name=W1
+Added Pin To Net: NetName=W2 Pin=DS2-6
+Added Net: Name=W2
+Added Pin To Net: NetName=XTAL1 Pin=C2-2
+Added Pin To Net: NetName=XTAL1 Pin=Y1-1
+Added Net: Name=XTAL1
+Added Pin To Net: NetName=XTAL2 Pin=C1-2
+Added Pin To Net: NetName=XTAL2 Pin=Y1-2
+Added Net: Name=XTAL2
+Added Class: Name=key_count
+Added Room: Name=key_count

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\SMG.obj" 
+TO ".\Objects\数码管" 
+PRINT(".\Listings\数码管.m51") RAMSIZE(256) 

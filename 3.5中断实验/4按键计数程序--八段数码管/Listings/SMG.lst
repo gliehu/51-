@@ -1,0 +1,129 @@
+A51 MACRO ASSEMBLER  SMG                                                                  03/30/2019 16:36:54 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00A2                 1     LATCH1 BIT P2.2
+  00A3                 2     LATCH2 BIT P2.3
+                       3     
+0000                   4     ORG 0000H
+0000 020006            5     LJMP START
+0003                   6     ORG 0003H
+0003 020058            7     LJMP INT_0
+0006                   8     START:
+0006 D2AF              9               SETB EA
+0008 D2A8             10               SETB EX0
+000A D2B8             11               SETB PX0
+000C D288             12               SETB IT0
+000E 900085           13           MOV DPTR,#TABLE
+0011 758160           14           MOV SP,#60H
+0014 753000           15           MOV 30H,#00H
+0017 116D             16               CALL STORE
+                      17     
+0019                  18     SCAN:    
+0019 E522             19          MOV A,22H
+001B F580             20          MOV P0,A
+001D D2A2             21          SETB LATCH1
+001F C2A2             22          CLR LATCH1
+0021 7580FE           23          MOV P0,#11111110B 
+0024 D2A3             24          SETB LATCH2
+0026 C2A3             25          CLR LATCH2
+0028 114F             26          CALL DELAY
+                      27     
+002A E521             28          MOV A,21H
+002C F580             29          MOV P0,A
+002E D2A2             30          SETB LATCH1
+0030 C2A2             31          CLR LATCH1
+0032 7580FD           32          MOV P0,#11111101B 
+0035 D2A3             33          SETB LATCH2
+0037 C2A3             34          CLR LATCH2
+0039 114F             35          CALL DELAY
+                      36              
+003B E520             37              MOV A,20H
+003D F580             38          MOV P0,A
+003F D2A2             39          SETB LATCH1
+0041 C2A2             40          CLR LATCH1
+0043 7580FB           41          MOV P0,#11111011B
+0046 D2A3             42          SETB LATCH2
+0048 C2A3             43          CLR LATCH2
+004A 114F             44          CALL DELAY
+004C 020019           45          LJMP SCAN
+                      46     
+004F 7E04             47     DELAY: MOV R6,#4    ;…®√Ë—” ±
+0051 7FF8             48     D3:    MOV R7,#248
+0053 DFFE             49            DJNZ R7,$
+0055 DEFA             50            DJNZ R6,D3
+0057 22               51            RET
+0058                  52     INT_0:
+0058 C2AF             53              CLR EA
+005A C0D0             54              PUSH PSW
+005C C0E0             55              PUSH Acc
+005E D2AF             56              SETB EA
+0060 0530             57          INC 30H
+A51 MACRO ASSEMBLER  SMG                                                                  03/30/2019 16:36:54 PAGE     2
+
+0062 116D             58              CALL STORE
+0064 C2AF             59              CLR EA
+0066 D0E0             60              POP Acc
+0068 D0D0             61              POP PSW
+006A D2AF             62              SETB EA
+006C 32               63              RETI
+                      64              
+006D                  65     STORE:
+006D E530             66               MOV A,30H
+006F 75F064           67               MOV B,#100
+0072 84               68               DIV AB
+0073 93               69               MOVC A,@A+DPTR
+0074 F522             70               MOV 22H,A
+0076 E5F0             71               MOV A,B
+0078 75F00A           72               MOV B,#10
+007B 84               73               DIV AB
+007C 93               74               MOVC A,@A+DPTR
+007D F521             75               MOV 21H,A
+007F E5F0             76               MOV A,B
+0081 93               77               MOVC A,@A+DPTR
+0082 F520             78               MOV 20H,A
+0084 22               79               RET
+                      80               
+0085 3F065B4F         81     TABLE:DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH    ;π≤“ı◊÷¬Î±Ì
+0089 666D7D07                
+008D 7F6F                    
+                      82     END
+A51 MACRO ASSEMBLER  SMG                                                                  03/30/2019 16:36:54 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+D3 . . . . . . . .  C ADDR   0051H   A   
+DELAY. . . . . . .  C ADDR   004FH   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+INT_0. . . . . . .  C ADDR   0058H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PX0. . . . . . . .  B ADDR   00B8H.0 A   
+SCAN . . . . . . .  C ADDR   0019H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0006H   A   
+STORE. . . . . . .  C ADDR   006DH   A   
+TABLE. . . . . . .  C ADDR   0085H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,196 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/09/2019 11:57:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00A2                 1     LATCH1 BIT P2.2
+  00A3                 2     LATCH2 BIT P2.3
+                       3     
+0000                   4     ORG 0000H
+0000 02001E            5     LJMP START ;Ö÷³ÌÐò
+0003                   6     ORG 0003H
+0003 0200DD            7     LJMP INT_0 ;°´¼üÖÐ¶Ï
+000B                   8     ORG 000BH
+000B 020061            9     LJMP T0_INT ;¶¨Ê±Æ÷0£¬10ms
+001B                  10     ORG 001BH
+001B 020045           11     LJMP T1_INT ;¶¨Ê±Æ÷1£¬1ms
+001E                  12     START:
+001E 758851           13               MOV  TCON,    #51H
+0021 75B802           14               MOV  IP,              #02H
+0024 75A88B           15               MOV  IE,              #8BH
+0027 758911           16               MOV  TMOD,    #11H
+002A 758AF0           17               MOV  TL0,             #0F0H
+002D 758CD8           18               MOV  TH0,             #0D8H
+0030 758B18           19               MOV  TL1,             #18H
+0033 758DFC           20               MOV  TH1,             #0FCH
+0036 9000F8           21             MOV  DPTR,      #TABLE
+0039 758160           22             MOV  SP,                #60H             
+003C 753200           23               MOV  32H,             #00H
+003F 7925             24               MOV  R1,              #25H ;Ö¸Õë£¬·ÃÎÊBCDÂë     
+0041 7BFE             25               MOV  R3,              #11111110B;Î»Âë³õÖµ
+                      26              
+0043 80FE             27              HERE: SJMP HERE  ;Ô­µØµÈ´ÖÐ¶Ï
+                      28                     
+0045                  29     T1_INT:
+0045 758B18           30              MOV   TL1,             #18H
+0048 758DFC           31              MOV   TH1,             #0FCH
+004B 8780             32            MOV   P0,                @R1  ;ÏÔÊ¾³ÌÐò£¬@r1Îª¶ÎÂë
+004D D2A2             33            SETB  LATCH1
+004F C2A2             34            CLR   LATCH1
+0051 8B80             35            MOV   P0,                R3
+0053 D2A3             36            SETB  LATCH2
+0055 C2A3             37            CLR   LATCH2
+0057 19               38              DEC   R1
+0058 EB               39              MOV   A,               R3
+0059 23               40              RL    A
+005A FB               41              MOV   R3,              A
+005B B91D02           42              CJNE  R1,              #1DH,EXIT_T1_INT
+005E 7925             43              MOV   R1,              #25H    
+0060 32               44             EXIT_T1_INT:RETI
+                      45              
+0061                  46     T0_INT:
+0061 C2AF             47              CLR            EA
+0063 C0D0             48              PUSH   PSW
+0065 C0E0             49              PUSH   Acc
+0067 8931             50              MOV    31H,            R1;¼Ù×°R1ÈëÕ»    
+0069 D2AF             51              SETB   EA
+006B 7926             52              MOV            R1,             #26H ;Ö¸Õë£¬·ÃÎÊBCDÂë
+006D 781E             53              MOV            R0,             #1EH ;Ö¸Õë£¬´æ¶ÎÂë
+006F 758AF0           54              MOV    TL0,            #0F0H
+0072 758CD8           55              MOV    TH0,            #0D8H
+0075 E532             56              MOV            A,              32H          ;°´¼ü¼ÆÊÖµ£¬Ñ¡¹¦ÄÜ
+0077 B40108           57              CJNE   A,              #01H ,EQU2
+A51 MACRO ASSEMBLER  SMG                                                                  04/09/2019 11:57:33 PAGE     2
+
+007A D28C             58              SETB   TR0
+007C 11A0             59            CALL     TIME
+007E 11C9             60              CALL   STORE
+0080 8013             61              SJMP   EXIT_T0_INT
+0082 B40202           62     EQU2:  CJNE     A,      #02H,   EQU3    
+0085 800E             63              SJMP   EXIT_T0_INT
+0087                  64     EQU3:
+0087 752600           65              MOV            26H,            #00H
+008A 752700           66              MOV            27H,            #00H
+008D 752800           67              MOV            28H,            #00H
+0090 752900           68              MOV            29H,            #00H
+0093 11C9             69              CALL STORE
+0095 C2AF             70     EXIT_T0_INT: CLR EA
+0097 A931             71              MOV            R1,             31H
+0099 D0E0             72              POP            Acc
+009B D0D0             73              POP            PSW
+009D D2AF             74              SETB           EA
+009F 32               75              RETI
+                      76     
+00A0                  77     TIME: 
+00A0 0526             78               INC   26H
+00A2 E526             79               MOV   A,              26H
+00A4 B46421           80               CJNE  A,              #64H, EXIT_TIME
+00A7 752600           81               MOV   26H,            #00H
+                      82               
+00AA 0527             83               INC   27H
+00AC E527             84               MOV   A,              27H
+00AE B43C17           85               CJNE  A,              #3CH, EXIT_TIME   
+00B1 752700           86               MOV   27H,            #00H
+                      87               
+00B4 0528             88               INC   28H
+00B6 E528             89               MOV   A,              28H
+00B8 B43C0D           90               CJNE  A,              #3CH, EXIT_TIME   
+00BB 752800           91               MOV   28H,            #00H
+                      92               
+00BE 0529             93               INC   29H
+00C0 E529             94               MOV   A,              29H
+00C2 B41803           95               CJNE  A,              #18H, EXIT_TIME
+00C5 752900           96               MOV   29H,            #00H
+00C8 22               97               EXIT_TIME:  RET
+                      98                      
+00C9                  99     STORE:
+00C9 E7              100               MOV   A,              @R1
+00CA 75F00A          101               MOV   B,              #10
+00CD 84              102               DIV   AB
+00CE 93              103               MOVC  A,              @A+DPTR
+00CF 08              104               INC   R0
+00D0 F6              105               MOV   @R0,            A
+00D1 E5F0            106               MOV   A,B
+00D3 93              107               MOVC  A,              @A+DPTR
+00D4 18              108               DEC   R0
+00D5 F6              109               MOV   @R0,            A
+00D6 08              110               INC   R0
+00D7 08              111               INC   R0
+00D8 09              112               INC   R1
+00D9 B92AED          113               CJNE  R1,             #2AH,   STORE     
+00DC 22              114               RET
+                     115     
+00DD                 116     INT_0:
+00DD C2AF            117              CLR            EA
+00DF C0D0            118              PUSH   PSW
+00E1 C0E0            119              PUSH   Acc
+00E3 D2AF            120              SETB   EA
+                     121             
+00E5 0532            122              INC            32H
+00E7 E532            123              MOV            A,              32H
+A51 MACRO ASSEMBLER  SMG                                                                  04/09/2019 11:57:33 PAGE     3
+
+00E9 B40403          124              CJNE           A,              #04H,   NEXT
+00EC 753201          125              MOV            32H,            #01H         
+00EF C2AF            126     NEXT:  CLR              EA
+00F1 D0E0            127              POP            Acc
+00F3 D0D0            128              POP            PSW
+00F5 D2AF            129              SETB   EA
+00F7 32              130              EXIT_INT_0: RETI
+                     131      
+00F8 3F065B4F        132     TABLE:DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH    ;¹²Òõ×ÖÂë±í
+00FC 666D7D07                
+0100 7F6F                    
+                     133     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/09/2019 11:57:33 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EQU2 . . . . . . .  C ADDR   0082H   A   
+EQU3 . . . . . . .  C ADDR   0087H   A   
+EXIT_INT_0 . . . .  C ADDR   00F7H   A   
+EXIT_T0_INT. . . .  C ADDR   0095H   A   
+EXIT_T1_INT. . . .  C ADDR   0060H   A   
+EXIT_TIME. . . . .  C ADDR   00C8H   A   
+HERE . . . . . . .  C ADDR   0043H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INT_0. . . . . . .  C ADDR   00DDH   A   
+IP . . . . . . . .  D ADDR   00B8H   A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+NEXT . . . . . . .  C ADDR   00EFH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   001EH   A   
+STORE. . . . . . .  C ADDR   00C9H   A   
+T0_INT . . . . . .  C ADDR   0061H   A   
+T1_INT . . . . . .  C ADDR   0045H   A   
+TABLE. . . . . . .  C ADDR   00F8H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TIME . . . . . . .  C ADDR   00A0H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

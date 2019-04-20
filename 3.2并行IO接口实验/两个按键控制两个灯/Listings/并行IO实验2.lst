@@ -1,0 +1,47 @@
+A51 MACRO ASSEMBLER  ____IO____2                                                          04/11/2019 11:54:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\并行IO实验2.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE 并行IO实验2.a51 SET(SMALL) DEBUG PRINT(.\Listings\并行IO实验2.lst) OBJECT(
+                      .\Objects\并行IO实验2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 758160            1     MOV     SP,     #60H
+0003 7590FF            2     MOV     P1,     #0FFH
+                       3     
+0006 309009            4     START:JNB        P1.0,  P1_2_ON
+0009 D292              5             SETB     P1.2
+000B 309108            6     AAA:    JNB      P1.1,  P1_3_ON
+000E D293              7             SETB     P1.3
+0010 80F4              8             SJMP     START
+                       9     
+0012                  10     P1_2_ON:
+0012 C292             11     CLR      P1.2
+0014 80F5             12     SJMP     AAA
+                      13              
+0016                  14     P1_3_ON:
+0016 C293             15     CLR      P1.3
+0018 80EC             16     SJMP     START
+                      17     END
+A51 MACRO ASSEMBLER  ____IO____2                                                          04/11/2019 11:54:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AAA. . . . . . . .  C ADDR   000BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P1_2_ON. . . . . .  C ADDR   0012H   A   
+P1_3_ON. . . . . .  C ADDR   0016H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

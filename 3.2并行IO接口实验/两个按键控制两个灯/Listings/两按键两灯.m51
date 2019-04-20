@@ -1,0 +1,112 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/11/2019  11:54:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\并行IO实验2.obj TO .\Objects\两按键两灯 PRINT (.\Listings\两按
+>> 键两灯.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\并行IO实验2.obj (____IO____2)
+
+
+LINK MAP OF MODULE:  .\Objects\两按键两灯 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+* OVERLAP * CODE    0000H     001AH     ABSOLUTE     
+            CODE    001AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   ?C_START
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\两按键两灯 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:001AH         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:001DH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:001AH         SYMBOL        STARTUP1
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2019  11:54:33  PAGE 2
+
+
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:001AH         LINE#         133
+  C:001CH         LINE#         134
+  C:001DH         LINE#         135
+  C:001EH         LINE#         136
+  C:0020H         LINE#         185
+  C:0023H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        ____IO____2
+  C:000BH         SYMBOL        AAA
+  D:0090H         SYMBOL        P1
+  C:0012H         SYMBOL        P1_2_ON
+  C:0016H         SYMBOL        P1_3_ON
+  D:0081H         SYMBOL        SP
+  C:0006H         SYMBOL        START
+  C:0000H         LINE#         65533
+  C:0003H         LINE#         2
+  C:0006H         LINE#         4
+  C:0009H         LINE#         5
+  C:000BH         LINE#         6
+  C:000EH         LINE#         7
+  C:0010H         LINE#         8
+  C:0012H         LINE#         11
+  C:0014H         LINE#         12
+  C:0016H         LINE#         15
+  C:0018H         LINE#         16
+  -------         ENDMOD        ____IO____2
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0002H
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ?C_START
+    MODULE:  .\Objects\STARTUP.obj (?C_STARTUP)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ?C_START
+    MODULE:  .\Objects\STARTUP.obj (?C_STARTUP)
+    ADDRESS: 0024H
+
+Program Size: data=9.0 xdata=0 code=41
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,114 @@
+;秒表程序
+;TO，计时，服务函数INT_0
+;
+;
+;
+;
+;
+;
+;
+;
+
+
+LATCH1 BIT P2.2
+LATCH2 BIT P2.3
+
+
+START:      
+        MOV 	SP,	#60H
+	  MOV  	P1,   #0FFH
+		  	  
+	  JNB  P1.0,KEY1 
+	  JNB  P1.1,KEY2
+	  JNB  P1.2,KEY3
+	  JNB  P1.3,KEY4 
+	  JNB  P1.4,KEY5
+	  JNB  P1.5,KEY6	  
+	  JNB  P1.6,KEY7 
+	  JNB  P1.7,TURN8 ;target out of range,超过2K不能跳转，可加一条中转指令	  
+	  LJMP START
+
+KEY1:	
+     MOV 	P0,	#06H
+     SETB 	LATCH1
+     CLR 	LATCH1
+     MOV 	P0,	#11111110B 
+     SETB 	LATCH2
+     CLR 	LATCH2
+     CALL 	DELAY
+	LJMP START
+KEY2:
+     MOV P0,#5BH
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#11111101B 
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+     LJMP START 
+KEY3:
+     MOV P0,#4FH
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#11111011B
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+	LJMP START
+KEY4:
+     MOV P0,#66H
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#11110111B 
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+	LJMP START
+KEY5:
+     MOV P0,#6DH
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#11101111B 
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+	 LJMP START
+	 
+TURN8:LJMP KEY8
+KEY6:
+     MOV P0,#7DH
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#11011111B
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+     LJMP START
+     	 
+KEY7:
+     MOV P0,#07H
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#10111111B
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+      LJMP START	 
+KEY8:
+     MOV P0,#7FH
+     SETB LATCH1
+     CLR LATCH1
+     MOV P0,#01111111B
+     SETB LATCH2
+     CLR LATCH2
+     CALL DELAY
+     LJMP START
+  
+
+DELAY: MOV R6,#4    ;扫描延时
+D3:    MOV R7,#248
+       DJNZ R7,$
+       DJNZ R6,D3
+       RET
+
+END

@@ -1,0 +1,85 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 14:24:54 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;°´¼üÖÐ¶ÏP1.0È¡·´¿ØÖÆµç»ú³ÌÐò
+                       2     ;±àÐ´ÈË£º¸ßºéÎ°
+                       3     ;±àÐ´ÈÕÆÚ2019-4-6
+                       4     ;ÐÞ¸ÄÈÕÆÚ2019-4-10
+                       5     ;30HÎª°´¼ü¼ÆÊ´æ´¢µ¥Ôª
+  00A2                 6     LATCH1 BIT P2.2
+  00A3                 7     LATCH2 BIT P2.3
+                       8     
+0000                   9     ORG 0000H
+0000 020006           10     LJMP START
+0003                  11     ORG 0003H
+0003 020018           12     LJMP INT_0
+0006                  13     START:
+0006 D2AF             14             SETB            EA
+0008 D2A8             15             SETB            EX0
+000A D2B8             16             SETB            PX0
+000C D288             17             SETB            IT0                             ;INT0ÖÐ¶Ï³õÊ¼»¯
+000E 900033           18           MOV               DPTR,           #TABLE
+0011 758160           19           MOV               SP,             #60H            ;·ÖÅä¶ÑÕ»
+0014 7900             20           MOV               R1,             #00H            ;°´¼ü¼ÆÊ´æ´¢µ¥Ôª
+                      21     
+0016                  22     SCAN:         
+0016 80FE             23          SJMP               SCAN
+                      24     
+0018                  25     INT_0:
+0018 C2AF             26              CLR            EA
+001A C0D0             27              PUSH   PSW
+001C C0E0             28              PUSH   Acc
+001E D2AF             29              SETB   EA   
+                      30              
+0020 E9               31              MOV            A,              R1
+0021 93               32              MOVC           A,              @A+DPTR
+0022 F590             33              MOV            P1,             A
+0024 09               34              INC            R1
+0025 B90602           35              CJNE           R1,             #06H,           EXIT
+0028 7900             36              MOV            R1,             #00H
+002A C2AF             37      EXIT: CLR              EA
+002C D0E0             38              POP            Acc
+002E D0D0             39              POP            PSW
+0030 D2AF             40              SETB   EA
+0032 32               41              RETI
+                      42               
+0033 AA55F00F         43     TABLE:DB 0AAH,055H,0F0H,0FH,99H,66H   ;LED±í
+0037 9966                    
+                      44     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 14:24:54 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EXIT . . . . . . .  C ADDR   002AH   A   
+INT_0. . . . . . .  C ADDR   0018H   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PX0. . . . . . . .  B ADDR   00B8H.0 A   
+SCAN . . . . . . .  C ADDR   0016H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0006H   A   
+TABLE. . . . . . .  C ADDR   0033H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

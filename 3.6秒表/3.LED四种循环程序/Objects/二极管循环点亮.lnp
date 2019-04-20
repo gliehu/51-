@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\二极管循环点亮.obj" 
+TO ".\Objects\二极管循环点亮" 
+PRINT(".\Listings\二极管循环点亮.m51") RAMSIZE(256) 

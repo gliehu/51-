@@ -1,0 +1,158 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/10/2019 14:43:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;秒表程序
+                       2     ;TO，计时，服务函蔍NT_0
+                       3     ;
+                       4     ;
+                       5     ;
+                       6     ;
+                       7     ;
+                       8     ;
+                       9     ;
+                      10     ;
+                      11     
+                      12     
+  00A2                13     LATCH1 BIT P2.2
+  00A3                14     LATCH2 BIT P2.3
+                      15     
+                      16     
+0000                  17     START:      
+0000 758160           18             MOV     SP,     #60H
+0003 7590FF           19               MOV   P1,   #0FFH
+                      20                               
+0006 309018           21               JNB  P1.0,KEY1 
+0009 309128           22               JNB  P1.1,KEY2
+000C 309238           23               JNB  P1.2,KEY3
+000F 309348           24               JNB  P1.3,KEY4 
+0012 309458           25               JNB  P1.4,KEY5
+0015 30956B           26               JNB  P1.5,KEY6          
+0018 30967B           27               JNB  P1.6,KEY7 
+001B 309762           28               JNB  P1.7,TURN8         
+001E 020000           29               LJMP START
+                      30     
+0021                  31     KEY1:   
+0021 758006           32          MOV        P0,     #06H
+0024 D2A2             33          SETB       LATCH1
+0026 C2A2             34          CLR        LATCH1
+0028 7580FE           35          MOV        P0,     #11111110B 
+002B D2A3             36          SETB       LATCH2
+002D C2A3             37          CLR        LATCH2
+002F 11BC             38          CALL       DELAY
+0031 020000           39             LJMP START
+0034                  40     KEY2:
+0034 75805B           41          MOV P0,#5BH
+0037 D2A2             42          SETB LATCH1
+0039 C2A2             43          CLR LATCH1
+003B 7580FD           44          MOV P0,#11111101B 
+003E D2A3             45          SETB LATCH2
+0040 C2A3             46          CLR LATCH2
+0042 11BC             47          CALL DELAY
+0044 020000           48          LJMP START 
+0047                  49     KEY3:
+0047 75804F           50          MOV P0,#4FH
+004A D2A2             51          SETB LATCH1
+004C C2A2             52          CLR LATCH1
+004E 7580FB           53          MOV P0,#11111011B
+0051 D2A3             54          SETB LATCH2
+0053 C2A3             55          CLR LATCH2
+0055 11BC             56          CALL DELAY
+0057 020000           57             LJMP START
+A51 MACRO ASSEMBLER  SMG                                                                  04/10/2019 14:43:07 PAGE     2
+
+005A                  58     KEY4:
+005A 758066           59          MOV P0,#66H
+005D D2A2             60          SETB LATCH1
+005F C2A2             61          CLR LATCH1
+0061 7580F7           62          MOV P0,#11110111B 
+0064 D2A3             63          SETB LATCH2
+0066 C2A3             64          CLR LATCH2
+0068 11BC             65          CALL DELAY
+006A 020000           66             LJMP START
+006D                  67     KEY5:
+006D 75806D           68          MOV P0,#6DH
+0070 D2A2             69          SETB LATCH1
+0072 C2A2             70          CLR LATCH1
+0074 7580EF           71          MOV P0,#11101111B 
+0077 D2A3             72          SETB LATCH2
+0079 C2A3             73          CLR LATCH2
+007B 11BC             74          CALL DELAY
+007D 020000           75              LJMP START
+                      76              
+0080 0200A9           77     TURN8:LJMP KEY8
+0083                  78     KEY6:
+0083 75807D           79          MOV P0,#7DH
+0086 D2A2             80          SETB LATCH1
+0088 C2A2             81          CLR LATCH1
+008A 7580DF           82          MOV P0,#11011111B
+008D D2A3             83          SETB LATCH2
+008F C2A3             84          CLR LATCH2
+0091 11BC             85          CALL DELAY
+0093 020000           86          LJMP START
+                      87              
+0096                  88     KEY7:
+0096 758007           89          MOV P0,#07H
+0099 D2A2             90          SETB LATCH1
+009B C2A2             91          CLR LATCH1
+009D 7580BF           92          MOV P0,#10111111B
+00A0 D2A3             93          SETB LATCH2
+00A2 C2A3             94          CLR LATCH2
+00A4 11BC             95          CALL DELAY
+00A6 020000           96           LJMP START         
+00A9                  97     KEY8:
+00A9 75807F           98          MOV P0,#7FH
+00AC D2A2             99          SETB LATCH1
+00AE C2A2            100          CLR LATCH1
+00B0 75807F          101          MOV P0,#01111111B
+00B3 D2A3            102          SETB LATCH2
+00B5 C2A3            103          CLR LATCH2
+00B7 11BC            104          CALL DELAY
+00B9 020000          105          LJMP START
+                     106       
+                     107     
+00BC 7E04            108     DELAY: MOV R6,#4    ;扫描延时
+00BE 7FF8            109     D3:    MOV R7,#248
+00C0 DFFE            110            DJNZ R7,$
+00C2 DEFA            111            DJNZ R6,D3
+00C4 22              112            RET
+                     113     
+                     114     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/10/2019 14:43:07 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D3 . . . . . . . .  C ADDR   00BEH   A   
+DELAY. . . . . . .  C ADDR   00BCH   A   
+KEY1 . . . . . . .  C ADDR   0021H   A   
+KEY2 . . . . . . .  C ADDR   0034H   A   
+KEY3 . . . . . . .  C ADDR   0047H   A   
+KEY4 . . . . . . .  C ADDR   005AH   A   
+KEY5 . . . . . . .  C ADDR   006DH   A   
+KEY6 . . . . . . .  C ADDR   0083H   A   
+KEY7 . . . . . . .  C ADDR   0096H   A   
+KEY8 . . . . . . .  C ADDR   00A9H   A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TURN8. . . . . . .  C ADDR   0080H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 14:43:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;°´¼üÖÐ¶Ï »¨ÑùµÆ 6ÖÖÄ£Ê½
+                       2     ;±àÐ´ÈË£º¸ßºéÎ°
+                       3     ;±àÐ´ÈÕÆÚ2019-4-6
+                       4     ;ÐÞ¸ÄÈÕÆÚ2019-4-10
+                       5     ;30HÎª°´¼ü¼ÆÊ´æ´¢µ¥Ôª
+  00A2                 6     LATCH1 BIT P2.2
+  00A3                 7     LATCH2 BIT P2.3
+                       8     
+0000                   9     ORG 0000H
+0000 020006           10     LJMP START
+0003                  11     ORG 0003H
+0003 02001C           12     LJMP INT_0
+0006                  13     START:
+0006 D2AF             14             SETB            EA
+0008 D2A8             15             SETB            EX0
+000A D2B8             16             SETB            PX0
+000C D288             17             SETB            IT0                             ;INT0ÖÐ¶Ï³õÊ¼»¯
+000E 900047           18           MOV               DPTR,           #TABLE
+0011 758160           19           MOV               SP,             #60H            ;·ÖÅä¶ÑÕ»
+0014 753000           20           MOV               30H,            #00H
+0017 753100           21             MOV             31H,            #00H
+                      22     
+001A                  23     SCAN:         
+001A 80FE             24          SJMP               SCAN
+                      25     
+001C                  26     INT_0:
+001C C2AF             27              CLR            EA
+001E C0D0             28              PUSH   PSW
+0020 C0E0             29              PUSH   Acc
+0022 D2AF             30              SETB   EA       
+0024 0530             31              INC            30H
+0026 E530             32              MOV            A,              30H
+0028 B4FF0D           33              CJNE           A,              #0FFH,          EXIT
+002B 753000           34              MOV            30H,            #00H
+002E 0531             35              INC            31H
+0030 E531             36              MOV            A,              31H
+0032 B4FF03           37              CJNE           A,              #0FFH,          EXIT
+0035 753100           38              MOV            31H,            #00H
+0038 E530             39      EXIT: MOV              A,              30H
+003A 64FF             40              XRL            A,              #0FFH
+003C F590             41              MOV            P1,             A
+003E C2AF             42              CLR            EA
+0040 D0E0             43              POP            Acc
+0042 D0D0             44              POP            PSW
+0044 D2AF             45              SETB   EA
+0046 32               46              RETI
+                      47               
+0047 AA55F00F         48     TABLE:DB 0AAH,055H,0F0H,0FH,99H,66H   ;LED±í
+004B 9966                    
+                      49     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 14:43:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EXIT . . . . . . .  C ADDR   0038H   A   
+INT_0. . . . . . .  C ADDR   001CH   A   
+IT0. . . . . . . .  B ADDR   0088H.0 A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PX0. . . . . . . .  B ADDR   00B8H.0 A   
+SCAN . . . . . . .  C ADDR   001AH   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0006H   A   
+TABLE. . . . . . .  C ADDR   0047H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

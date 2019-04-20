@@ -1,0 +1,77 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 13:23:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00A2                 1     LATCH1 BIT P2.2
+  00A3                 2     LATCH2 BIT P2.3
+                       3     
+                       4     
+0000                   5     START:
+0000 90002F            6           MOV               DPTR,           #TABLE
+0003 758160            7           MOV               SP,             #60H
+0006 7901              8             MOV             R1,             #01H ;指针，访问码        
+0008 7BFE              9             MOV             R3,             #11111110B;位码初值
+                      10                  
+                      11     
+000A                  12     SCAN:   
+000A E9               13             MOV             A,R1
+000B 93               14             MOVC            A,              @A+DPTR
+000C F580             15             MOV             P0,A
+000E D2A2             16             SETB            LATCH1
+0010 C2A2             17             CLR             LATCH1
+0012 8B80             18             MOV             P0,             R3
+0014 D2A3             19             SETB            LATCH2
+0016 C2A3             20             CLR             LATCH2
+0018 1126             21             CALL            DELAY
+                      22     
+001A 09               23             INC             R1
+001B EB               24             MOV             A,              R3
+001C 23               25             RL              A
+001D FB               26             MOV             R3,             A
+                      27              
+001E B909E9           28             CJNE            R1,             #09H,           SCAN
+0021 7901             29             MOV             R1,             #01H
+0023 02000A           30             LJMP            SCAN
+                      31                                   
+                      32     
+0026 7E04             33     DELAY: MOV              R6,             #4    ;扫描延时
+0028 7FF8             34     D3:    MOV              R7,             #248
+002A DFFE             35            DJNZ     R7,             $
+002C DEFA             36            DJNZ     R6,             D3
+002E 22               37            RET
+                      38        
+002F 3F065B4F         39     TABLE:DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH    ;共阴字码表
+0033 666D7D07                
+0037 7F6F                    
+                      40     
+                      41     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 13:23:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+D3 . . . . . . . .  C ADDR   0028H   A   
+DELAY. . . . . . .  C ADDR   0026H   A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SCAN . . . . . . .  C ADDR   000AH   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TABLE. . . . . . .  C ADDR   002FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

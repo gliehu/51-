@@ -1,0 +1,136 @@
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 13:11:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\SMG.obj
+ASSEMBLER INVOKED BY: D:\keil\C51\BIN\A51.EXE SMG.a51 SET(SMALL) DEBUG PRINT(.\Listings\SMG.lst) OBJECT(.\Objects\SMG.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;°´¼üÖÐ¶Ï³ÌÐò
+                       2     ;±àÐ´ÈË£º¸ßºéÎ°
+                       3     ;±àÐ´ÈÕÆÚ2019-4-6
+                       4     ;ÐÞ¸ÄÈÕÆÚ2019-4-10
+                       5     ;30HÎª°´¼ü¼ÆÊ´æ´¢µ¥Ôª
+                       6     ;
+                       7     
+  00A2                 8     LATCH1 BIT P2.2
+  00A3                 9     LATCH2 BIT P2.3
+                      10     
+0000                  11     ORG 0000H
+0000 020003           12     LJMP START
+                      13     ;ORG 0003H
+                      14     ;LJMP INT_0
+0003                  15     START:
+                      16             ;SETB           EA
+                      17             ;SETB           EX0
+                      18             ;SETB           PX0
+                      19             ;SETB           IT0                             ;INT0ÖÐ¶Ï³õÊ¼»¯
+0003 90006E           20           MOV               DPTR,           #TABLE
+0006 758160           21           MOV               SP,             #60H            ;·ÖÅä¶ÑÕ»
+0009 753000           22           MOV               30H,            #00H                    ;°´¼ü¼ÆÊ´æ´¢µ¥Ôª
+000C 7590FF           23             MOV             P1,             #0FFH
+                      24             
+000F 1156             25             CALL            STORE                           ;ÏÈ´æ´¢Ò»´Î¶ÎÂë
+                      26     
+0011                  27     SCAN:
+0011 859030           28          MOV                30H,            P1
+0014 120056           29          LCALL              STORE
+                      30          
+0017 E522             31          MOV                A,              22H
+0019 F580             32          MOV                P0,             A
+001B D2A2             33          SETB               LATCH1
+001D C2A2             34          CLR                LATCH1
+001F 7580FE           35          MOV                P0,             #11111110B 
+0022 D2A3             36          SETB               LATCH2  
+0024 C2A3             37          CLR                LATCH2
+0026 114D             38          CALL               DELAY
+                      39     
+0028 E521             40          MOV                A,              21H
+002A F580             41          MOV                P0,             A
+002C D2A2             42          SETB               LATCH1
+002E C2A2             43          CLR                LATCH1
+0030 7580FD           44          MOV                P0,             #11111101B 
+0033 D2A3             45          SETB               LATCH2
+0035 C2A3             46          CLR                LATCH2
+0037 114D             47          CALL               DELAY
+                      48              
+0039 E520             49          MOV                A,              20H
+003B F580             50          MOV                P0,             A
+003D D2A2             51          SETB               LATCH1
+003F C2A2             52          CLR                LATCH1
+0041 7580FB           53          MOV                P0,             #11111011B
+0044 D2A3             54          SETB               LATCH2
+0046 C2A3             55          CLR                LATCH2
+0048 114D             56          CALL               DELAY
+004A 020011           57          LJMP               SCAN
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 13:11:30 PAGE     2
+
+                      58     
+004D 7E04             59     DELAY: MOV              R6,             #4    ;É¨ÃèÑÓÊ±
+004F 7FF8             60     D3:    MOV              R7,             #248
+0051 DFFE             61            DJNZ     R7,             $
+0053 DEFA             62            DJNZ     R6,             D3
+0055 22               63            RET
+                      64     ;INT_0:
+                      65              ;CLR           EA
+                      66              ;PUSH  PSW
+                      67              ;PUSH  Acc
+                      68              ;SETB  EA
+                      69            ;INC             30H             ;°´¼ü´ÎÊ
+                      70              ;CALL  STORE   ;×ª»»Îª¶ÎÂë
+                      71              ;CLR           EA
+                      72              ;POP           Acc
+                      73              ;POP           PSW
+                      74              ;SETB  EA
+                      75              ;RETI
+                      76     
+                      77     ;¶ÎÂë×ª»»³ÌÐò
+0056                  78     STORE:
+0056 E530             79               MOV   A,      30H
+0058 75F064           80               MOV   B,      #100
+005B 84               81               DIV   AB
+005C 93               82               MOVC  A,      @A+DPTR
+005D F522             83               MOV   22H,    A
+005F E5F0             84               MOV   A,      B
+0061 75F00A           85               MOV   B,      #10
+0064 84               86               DIV   AB
+0065 93               87               MOVC  A,      @A+DPTR
+0066 F521             88               MOV   21H,    A
+0068 E5F0             89               MOV   A,      B
+006A 93               90               MOVC  A,      @A+DPTR
+006B F520             91               MOV   20H,A
+006D 22               92               RET
+                      93               
+006E 3F065B4F         94     TABLE:DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH    ;¹²Òõ×ÖÂë±í
+0072 666D7D07                
+0076 7F6F                    
+                      95     END
+A51 MACRO ASSEMBLER  SMG                                                                  04/14/2019 13:11:30 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+D3 . . . . . . . .  C ADDR   004FH   A   
+DELAY. . . . . . .  C ADDR   004DH   A   
+LATCH1 . . . . . .  B ADDR   00A0H.2 A   
+LATCH2 . . . . . .  B ADDR   00A0H.3 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SCAN . . . . . . .  C ADDR   0011H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0003H   A   
+STORE. . . . . . .  C ADDR   0056H   A   
+TABLE. . . . . . .  C ADDR   006EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

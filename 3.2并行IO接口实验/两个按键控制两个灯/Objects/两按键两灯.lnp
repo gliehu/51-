@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\并行IO实验2.obj" 
+TO ".\Objects\两按键两灯" 
+PRINT(".\Listings\两按键两灯.m51") RAMSIZE(256) 
